@@ -7,12 +7,12 @@ const ora = require("ora"); // 用于输出loading
 const chalk = require("chalk"); // 用于改变文字颜色
 const notifier = require("node-notifier");
 const path = require("path");
-let branch = "master";
+let branch = "main";
 
 const REMOTES = {
-  react: "https://github.com/LazyChun/lazychun-program-react.git"
-  // vue: "",
-  // html: ""
+  react: "https://github.com/LazyChun/lazychun-program-react.git",
+  vue: "",
+  html: ""
 };
 
 const initAction = async (name, option) => {
@@ -31,7 +31,7 @@ const initAction = async (name, option) => {
     return;
   }
   // 2. 获取option，确定模板类型（分支）
-  if (option.dev) branch = "develop";
+  //if (option.dev) branch = "develop";
 
   // 定义需要询问的问题
   const questions = [
@@ -49,7 +49,8 @@ const initAction = async (name, option) => {
     {
       type: "list",
       message: "请选择工具开发环境:",
-      choices: ["react", "vue", "html"],
+      //choices: ["react", "vue", "html"],
+      choices: ["react"],
       name: "type"
     },
     // {
@@ -112,6 +113,7 @@ const initAction = async (name, option) => {
   console.log("环境类型", programType);
   const remote = REMOTES[programType];
   console.log("remote", remote);
+  console.log("branch", branch);
   // 4. 下载模板
   await clone(`direct:${remote}#${branch}`, name, {
     clone: true
@@ -122,9 +124,10 @@ const initAction = async (name, option) => {
   const pwd = shell.pwd();
   deleteDir.map(item => shell.rm("-rf", pwd + `/${name}/${item}`));
 
+  console.log("__dirname", __dirname);
   //根据用户配置调整文件
   let jsonData = fs.readFileSync(
-    (path.join(__dirname, "./"), "package.json"),
+    (path.join(__dirname, "./"), `${name}/package.json`),
     function(err, data) {
       console.log(err);
     }
@@ -137,7 +140,7 @@ const initAction = async (name, option) => {
   console.log(path.join(__dirname, `${name}/`));
   let obj = JSON.stringify(jsonData, null, "\t");
   let sss = fs.writeFileSync(
-    (path.join(__dirname, "./"), "package.json"),
+    (path.join(__dirname, "./"), `${name}/package.json`),
     obj,
     function(err, data) {
       console.log(err, data);
