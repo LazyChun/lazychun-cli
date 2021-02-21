@@ -108,8 +108,12 @@ const initAction = async (name, option) => {
   ]);
   if (!confirm.isConfirm) return false;
 
+  const programType = answers["type"];
+  console.log("环境类型", programType);
+  const remote = REMOTES[programType];
+  console.log("remote", remote);
   // 4. 下载模板
-  await clone(`direct:${REMOTES[answers["type"]]}#${branch}`, name, {
+  await clone(`direct:${remote}#${branch}`, name, {
     clone: true
   });
 

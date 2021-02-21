@@ -1,15 +1,15 @@
 {
   "name": "lazychun-cli",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Quickly build the scaffolding for the lazychun programs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "malunan",
+  "author": "lazychun",
   "license": "MIT",
   "bin": {
-    "lazychun-ma": "index.js"
+    "lazychun-program": "index.js"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
