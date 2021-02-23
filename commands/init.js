@@ -12,7 +12,7 @@ let branch = "main";
 const REMOTES = {
   react: "https://github.com/LazyChun/lazychun-program-react.git",
   vue: "",
-  html: ""
+  html: "https://github.com/LazyChun/lazychun-program-html.git"
 };
 
 const initAction = async (name, option) => {
@@ -50,7 +50,7 @@ const initAction = async (name, option) => {
       type: "list",
       message: "请选择工具开发环境:",
       //choices: ["react", "vue", "html"],
-      choices: ["react"],
+      choices: ["react", "html"],
       name: "type"
     },
     // {
