@@ -1,6 +1,6 @@
 {
   "name": "lazychun-cli",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Quickly build the scaffolding for the lazychun programs",
   "main": "index.js",
   "scripts": {

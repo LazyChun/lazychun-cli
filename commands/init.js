@@ -120,7 +120,8 @@ const initAction = async (name, option) => {
   });
 
   // 5. 清理文件
-  const deleteDir = [".git", ".gitignore", "README.md", "docs"]; // 需要清理的文件
+  //const deleteDir = [".git", ".gitignore", "README.md", "docs"]; // 需要清理的文件
+  const deleteDir = [".git", ".gitignore", "docs"]; // 需要清理的文件
   const pwd = shell.pwd();
   deleteDir.map(item => shell.rm("-rf", pwd + `/${name}/${item}`));
 
